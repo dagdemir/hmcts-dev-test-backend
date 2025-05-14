@@ -19,11 +19,14 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Title is mandatory")
     private String title;
 
     private String description;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
+    @Future(message = "Due date must be in the future")
     private LocalDateTime dueDate;
 }

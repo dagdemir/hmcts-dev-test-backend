@@ -29,7 +29,7 @@ public class TaskServiceImpl implements TaskService {
     public Task updateTaskStatus(Long id, String status) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Task not found"));
-        task.setStatus(status);
+        task.setStatus(Enum.valueOf(org.example.techtask.model.Status.class, status));
         return taskRepository.save(task);
     }
 
